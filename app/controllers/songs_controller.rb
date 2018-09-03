@@ -1,8 +1,10 @@
 class SongsController < ApplicationController
   def index
+    @songs = Song.all
   end
 
   def show
+    @song = Song.find(params[:id])
   end
 
   def new
@@ -34,6 +36,7 @@ class SongsController < ApplicationController
     end
   end
 
+
   def destroy
     @song = Song.find(params[:id])
     @song.destroy
@@ -47,4 +50,3 @@ class SongsController < ApplicationController
     params.require(:song).permit(:title)
   end
 end
-
